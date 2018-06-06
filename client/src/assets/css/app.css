@@ -1,0 +1,7 @@
+html,
+body,
+#root {
+  margin: 0;
+  /* height of footer*/
+  min-height: 100vh;
+}
