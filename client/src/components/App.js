@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import '../assets/images/css/App.css';
 import AddStudentForm from './add_student_form';
 import Footer from './footer';
 import Header from './header';
 import StudentList from './student_list';
+import '../assets/css/app.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         <AddStudentForm />
         <StudentList />
