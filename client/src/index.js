@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+
+import promiseMiddleware from './middleware/promise';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
-import { browserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+const store = createStore(rootReducer, {}, applyMiddleware(promiseMiddleware));
 
 ReactDOM.render(
-    <Provider store={createStore(rootReducer)}>
+    <Provider store={store}>
         <App />
     </Provider>
     , document.getElementById('root'));

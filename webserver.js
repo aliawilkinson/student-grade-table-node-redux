@@ -1,22 +1,32 @@
-//express and body parser are np modules
+//express and body-parser are node modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql')
+const mysql = require('mysql');
 const webserver = express();
 const { credentials } = require('./config/mysql_credentials');
-const dataBase = mysql.createConnection(credentials);
+const database = mysql.createConnection(credentials);
 
 webserver.use(bodyParser.urlencoded({ extended: false }));
 webserver.use(bodyParser.json());
 
-dataBase.connect((error) => {
+database.connect((error) => {
     if (error) throw error;
-    console.log("databaseconnection successful")
+    console.log("database connection successful");
 });
 
+webserver.use(express.static(__dirname + "/client" + "/public"));
 
-webserver.use(express.static(__dirname + "/client" + "/public")); //sets our root folder, is where the html is housed
+// ====================================
+// ======= Endpoints start here =======
+// ====================================
+
+require('./routes')(webserver, mysql, database);
+
+webserver.get('/test', (req, res) => {
+    res.sendFile("/Users/dylanwidjaja/Desktop/projects/student-grade-table/test.html");
+})
+
 
 webserver.listen(9000, () => {
-    console.log('webserver listening on port 9000')
+    console.log("webserver listening on port 9000");
 })

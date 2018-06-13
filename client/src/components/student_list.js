@@ -5,7 +5,30 @@ import { getStudentList } from '../actions';
 import '../assets/css/student_list.css';
 
 class StudentList extends Component {
+    constructor(props) {
+        super(props);
+        debugger;
+        this.getStudentData();
+    };
+
+    async getStudentData() {
+        debugger;
+        await this.props.getStudentList();
+    }
     render() {
+
+        const studentData = this.props.studentList.map((item, itemIndex) => {
+            return (
+                <tr key={itemIndex}>
+                    <td>{item.student_name}</td>
+                    <td>{item.grade_value}</td>
+                    <td>{item.class_name}</td>
+                    <td>Edit</td>
+                    <td><button className>Delete</button></td>
+                </tr>
+            );
+        });
+
         console.log(this.props.getStudentList());
         return (
             <div className="student-list">
@@ -17,14 +40,9 @@ class StudentList extends Component {
                             <th>Student Grade</th>
                             <th>Operations</th>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </thead>
                     <tbody>
+                        {studentData}
                     </tbody>
                 </table>
             </div>
