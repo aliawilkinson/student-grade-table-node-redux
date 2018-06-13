@@ -1,0 +1,19 @@
+{
+  "name": "sgt_new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliawilkinson/student-grade-table-node-redux.git"
+  },
+  "author": "Alia Wilkinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliawilkinson/student-grade-table-node-redux/issues"
+  },
+  "homepage": "https://github.com/aliawilkinson/student-grade-table-node-redux#readme"
+}
